@@ -72,36 +72,68 @@ int main()
 	int num,result1,result2;
 	cout<<"enter the number whose factorial is to be calculated : ";
 	cin>>num;
-	 result1=factorial(num);
-	 result2=recfactor(num);
-	 cout<<"factorial without recursion: "<<result1;
-	 cout<<"\nFactorial with recursion: " <<result2;
-	 
+	try 
+	{
+		if(num<0)
+		throw "Invalid ...";
+		result1=factorial(num);
+		result2=recfactor(num);
+		cout<<"factorial without recursion: "<<result1;
+		cout<<"\nFactorial with recursion: " <<result2;
+	}
+	catch(char const *a)
+	{
+		cout<<a;
+	}
+	  
 	 cout<<"\n\nenter values for gcd calculation";
 
 	int a,b;
 	cout<<"\nenter 2 numbers: ";
 	cin>>a>>b;
-	
-    result1=gcditeration(a,b);
-    result2=gcdrecursion(a,b);
-    cout<<"result for iteration: "<<result1;
-    cout<<endl;
-    cout<<"result for recursion: "<<result2;
-
+	try
+    {   if(a<0||b<0)
+      throw "Invalid...";	
+      result1=gcditeration(a,b);
+      result2=gcdrecursion(a,b);
+      cout<<"result for iteration: "<<result1;
+      cout<<endl;
+      cout<<"result for recursion: "<<result2;
+    } 
+    catch(char const *a)
+	{
+		cout<<a;
+	}
 	cout<<"\n\nenter values for power function:\n";
 	cin>>a>>b;
-	int pow1=rec_pow(a,b);
-	int pow2=pow(a,b);
-	cout<<"power by recursion: "<<pow1<<"\npower by iteration: "<<pow2<<endl;
-
-	cout<<"\n\nenter input for fibonacci calculation\n";
-	cin>>num;
-	fib(num);
-	cout<<endl; 
-	int i=0;
-	while(i<num)
-	{cout<<" "<<recursive_fib(i);
-	i++;
+	try
+	{  if(a==0&&b==0)
+	   throw "invalid..." ;
+	
+	  int pow1=rec_pow(a,b);
+	  int pow2=pow(a,b);
+	  cout<<"power by recursion: "<<pow1<<"\npower by iteration: "<<pow2<<endl;
+    }
+    catch(char const *a)
+    {
+    	cout<<a;
+	}
+	  cout<<"\n\nenter input for fibonacci calculation\n";
+	  cin>>num;
+	  try
+	{
+	  if(num<=0)
+	  throw "invalid...";
+	  fib(num);
+	  cout<<endl; 
+	  int i=0;
+	  while(i<num)
+	  {cout<<" "<<recursive_fib(i);
+	    i++;
+	  }
+    }
+    catch(char const*a)
+    {
+    	cout<<a;
 	}
 }
